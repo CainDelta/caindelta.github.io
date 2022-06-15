@@ -60,8 +60,8 @@
     myConnector.getData = function(table, doneCallback) {
 
 
-      var url = 'http://localhost:5000/narn';
-      var url2 = 'http://localhost:5000/acs2020';
+      var url = 'https://tableau-socratas.herokuapp.com/narn';
+      var url2 = 'https://tableau-socratas.herokuapp.com/acs2020';
 
       $.when(
           $.getJSON(url),
