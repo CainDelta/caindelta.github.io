@@ -1,54 +1,11 @@
 (function () {
     var myConnector = tableau.makeConnector();
 
-//     myConnector.getSchema = function (schemaCallback) {
-//     var cols = [{
-//         id: "id",
-//         dataType: tableau.dataTypeEnum.string
-//     }, {
-//         id: "mag",
-//         alias: "magnitude",
-//         dataType: tableau.dataTypeEnum.float
-//     }, {
-//         id: "title",
-//         alias: "title",
-//         dataType: tableau.dataTypeEnum.string
-//     }, {
-//         id: "location",
-//         dataType: tableau.dataTypeEnum.geometry
-//     }];
-//
-//     var tableSchema = {
-//         id: "earthquakeFeed",
-//         alias: "Earthquakes with magnitude greater than 4.5 in the last seven days",
-//         columns: cols
-//     };
-//
-//     schemaCallback([tableSchema]);
-// };
-// //
-//     myConnector.getData = function(table, doneCallback) {
-//     $.getJSON("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson", function(resp) {
-//         var feat = resp.features,
-//             tableData = [];
-//         console.log(resp)
-//         // Iterate over the JSON object
-//         for (var i = 0, len = feat.length; i < len; i++) {
-//             tableData.push({
-//                 "id": feat[i].id,
-//                 "mag": feat[i].properties.mag,
-//                 "title": feat[i].properties.title,
-//                 "location": feat[i].geometry
-//             });
-//         }
-//
-//         table.appendRows(tableData);
-//         doneCallback();
-//     });
-//   };
 
     myConnector.getSchema = function (schemaCallback) {
-    var cols = [
+
+    //TABLE ONE COLUMNS -- PREVIEW
+    var narn_cols = [
       {id: "cntyfips",dataType: tableau.dataTypeEnum.string},
       {id: "country",dataType: tableau.dataTypeEnum.string},
       {id: "direction",dataType: tableau.dataTypeEnum.string},
@@ -66,100 +23,133 @@
 
               ];
 
-    var tableSchema = {
+    var narn_tableSchema = {
         id: "NARN",
         alias: "Narn Dataset",
-        columns: cols
-    };
-
-    schemaCallback([tableSchema]);
+        columns: narn_cols
     };
 
 
+    //TABLE 2 COLUMNS
+    var acs_cols = [
+      {id: "name_check",dataType: tableau.dataTypeEnum.string},
+      {id: "statefp",dataType: tableau.dataTypeEnum.string},
+      {id: "countyfp",dataType: tableau.dataTypeEnum.string},
+      {id: "countyns",dataType: tableau.dataTypeEnum.string},
+      {id: "geoid",dataType: tableau.dataTypeEnum.string},
+      {id: "namelsad",dataType: tableau.dataTypeEnum.string},
+      {id: "classfp",dataType: tableau.dataTypeEnum.string},
+      {id: "mtfcc",dataType: tableau.dataTypeEnum.string},
+      {id: "funcstat",dataType: tableau.dataTypeEnum.string},
+      {id: "geometry",dataType: tableau.dataTypeEnum.geometry},
+              ];
 
-    // myConnector.getData = function(table, doneCallback) {
-    //
-    //   var username = "exnihilonihilfit134@gmail.com"
-    //   var password = "35%##s*MFSGMs%H"
-    //
-    //   $.ajax({
-    //       url: "https://capmanagementllc.partner.socrata.com/resource/bby4-tw54.json",
-    //       type: "GET",
-    //
-    //
-    //       // headers: {
-    //       //     "Authorization": "Basic " + btoa(username + ":" + password)
-    //       //   },
-    //       dataType: 'jsonp',
-    //       headers: {
-    //          "Authorization": "Basic ZXhuaWhpbG9uaWhpbGZpdDEzNEBnbWFpbC5jb206MzUlIyNzKk1GU0dNcyVI"
-    //        },
-    //       data: {
-    //         "$$app_token" : "83WwNHqYKhXSgI84G9YfK8xs7"
-    //       }
-    //   }).done(function(data) {
-    //
-    //     console.log('passing through')
-    //
-    //     var feat = data.features,
-    //         tableData = [];
-    //
-    //     // Iterate over the JSON object
-    //     for (var i = 0, len = feat.length; i < len; i++) {
-    //         tableData.push({
-    //             "rrowner3": feat[i].properties.rrowner3,
-    //             "carddirect": feat[i].properties.carddirect,
-    //             "trkrghts3": feat[i].properties.trkrghts3,
-    //             "trkrghts9": feat[i].properties.trkrghts9
-    //         });
-    //     }
-    //
-    //     table.appendRows(tableData);
-    //     doneCallback();
-    //
-    //   });
-    //
-    // };
+     var acs_tableSchema = {
+         id: "ACS",
+         alias: "ACS 2020",
+         columns: acs_cols
+     };
+
+
+    schemaCallback([narn_tableSchema,acs_tableSchema]);
+    };
+
+
+
 
     myConnector.getData = function(table, doneCallback) {
 
-      $.getJSON("https://tableau-socratas.herokuapp.com/narn", function(resp) {
-          var feat = resp,
-              tableData = [];
 
-          // Iterate over the JSON object
-          for (var i = 0, len = feat.length; i < len; i++) {
-              tableData.push({
-                "cntyfips":feat[i].cntyfips,
-                "country":feat[i].country,
-                "direction":feat[i].direction,
-                "fraarcid":feat[i].fraarcid,
-                "frfranode":feat[i].frfranode,
-                "km":feat[i].km,
-                "miles":feat[i].miles,
-                "net":feat[i].net,
-                "objectid":feat[i].objectid,
-                "geometry":feat[i].the_geom,
-                "carddirect":feat[i].carddirect,
-                "rrowner3":feat[i].rrowner3,
-                "trkrghts3":feat[i].trkrghts3,
-                "trkrghts9":feat[i].trkrghts9
-              });
+      var url = 'http://localhost:5000/narn';
+      var url2 = 'http://localhost:5000/acs2020';
+
+      $.when(
+          $.getJSON(url),
+          $.getJSON(url2)
+      ).done(function(result1, result2) {
+
+        var tableData = [];
+
+        if (table.tableInfo.id == "NARN") {
+          var feat = result1[0]
+              for (var i = 0, len = feat.length; i < len; i++) {
+                  tableData.push({
+                    "cntyfips":feat[i].cntyfips,
+                    "country":feat[i].country,
+                    "direction":feat[i].direction,
+                    "fraarcid":feat[i].fraarcid,
+                    "frfranode":feat[i].frfranode,
+                    "km":feat[i].km,
+                    "miles":feat[i].miles,
+                    "net":feat[i].net,
+                    "objectid":feat[i].objectid,
+                    "geometry":feat[i].the_geom,
+                    "carddirect":feat[i].carddirect,
+                    "rrowner3":feat[i].rrowner3,
+                    "trkrghts3":feat[i].trkrghts3,
+                    "trkrghts9":feat[i].trkrghts9
+                  });
+              }
           }
 
-          table.appendRows(tableData);
-          doneCallback();
-        });
+         if (table.tableInfo.id == 'ACS') {
+           var feat2 = result2[0]
+            for (var i = 0, len = feat2.length; i < len; i++) {
+                tableData.push({
+                  "name_check":feat2[i].name_check,
+                  "statefp":feat2[i].statefp,
+                  "countyfp":feat2[i].countyfp,
+                  "countyns":feat2[i].countyns,
+                  "geoid":feat2[i].geoid,
+                  "namelsad":feat2[i].namelsad,
+                  "classfp":feat2[i].classfp,
+                  "mtfcc":feat2[i].mtfcc,
+                  "funcstat":feat2[i].funcstat,
+                  "geometry":feat2[i].the_geom
+                });
+            }
+          }
+
+
+        table.appendRows(tableData);
+        console.log(tableData)
+        doneCallback();
+
+      });
+
+
+
+      // $.getJSON("https://tableau-socratas.herokuapp.com/narn", function(resp) {
+      //     var feat = resp,
+      //         tableData = [];
+      //
+      //     // Iterate over the JSON object
+      //     for (var i = 0, len = feat.length; i < len; i++) {
+      //         tableData.push({
+      //           "cntyfips":feat[i].cntyfips,
+      //           "country":feat[i].country,
+      //           "direction":feat[i].direction,
+      //           "fraarcid":feat[i].fraarcid,
+      //           "frfranode":feat[i].frfranode,
+      //           "km":feat[i].km,
+      //           "miles":feat[i].miles,
+      //           "net":feat[i].net,
+      //           "objectid":feat[i].objectid,
+      //           "geometry":feat[i].the_geom,
+      //           "carddirect":feat[i].carddirect,
+      //           "rrowner3":feat[i].rrowner3,
+      //           "trkrghts3":feat[i].trkrghts3,
+      //           "trkrghts9":feat[i].trkrghts9
+      //         });
+      //     }
+      //
+      //     table.appendRows(tableData);
+      //     doneCallback();
+      //   });
 
 
     };
-    //
 
-    //
-    //
-    //
-    //
-    // };
 
     tableau.registerConnector(myConnector);
   })();
