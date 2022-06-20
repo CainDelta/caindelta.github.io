@@ -249,7 +249,7 @@
 
       if((endpoint_url.includes('bby4-tw54'))){
 
-        var link = "https://tableau-socratas.herokuapp.com/narn"
+        var link = "https://beta-353914.lm.r.appspot.com/narn"
         $.getJSON(link, function(resp) {
             var feat = resp.results,
                 tableData = [];
@@ -291,7 +291,7 @@
 
       } else if ((endpoint_url.includes('uu2z-f857'))) {
 
-        var link = "https://tableau-socratas.herokuapp.com/dotfra"
+        var link = "https://beta-353914.lm.r.appspot.com/dotfra"
         $.getJSON(link, function(resp) {
             var feat = resp.results,
                 tableData = [];
@@ -331,7 +331,7 @@
           });
 
       } else {
-        var link = "https://tableau-socratas.herokuapp.com/acs"
+        var link = "https://beta-353914.lm.r.appspot.com/acs"
         $.getJSON(link, function(resp) {
             var feat = resp.results,
                 tableData = [];
