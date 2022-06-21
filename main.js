@@ -51,7 +51,7 @@
         // NARN
         if (endpoint_url.includes('bby4-tw54')) {
 
-            
+
             var col2 = { id: "objectid", dataType: tableau.dataTypeEnum.string};
             var col1 = { id: "the_geom", dataType: tableau.dataTypeEnum.geometry};
             var col3 = { id: "fraarcid", dataType: tableau.dataTypeEnum.string};
@@ -249,15 +249,15 @@
 
       if((endpoint_url.includes('bby4-tw54'))){
 
-        var link = "https://beta-353914.lm.r.appspot.com/narn"
+        var link = "https://socrata-fastapi-dcojycxoeq-lm.a.run.app/narn"
         $.getJSON(link, function(resp) {
-            var feat = resp.results,
+            var feat = resp,
                 tableData = [];
             console.log(feat)
             // Iterate over the JSON object
             for (var i = 0, len = feat.length; i < len; i++) {
                 tableData.push({
-                   
+
                     'objectid': feat[i].objectid,
                     'the_geom': feat[i].the_geom,
                     'fraarcid': feat[i].fraarcid,
@@ -281,7 +281,7 @@
                     'timezone': feat[i].timezone,
                     'shape_leng': feat[i].shape_leng,
                     'shape_stlength': feat[i].shape_stlength
-   
+
                 });
             }
             chunkData(table, tableData,DoneCallback);
@@ -291,9 +291,9 @@
 
       } else if ((endpoint_url.includes('uu2z-f857'))) {
 
-        var link = "https://beta-353914.lm.r.appspot.com/dotfra"
+        var link = "https://socrata-fastapi-dcojycxoeq-lm.a.run.app/dotfra"
         $.getJSON(link, function(resp) {
-            var feat = resp.results,
+            var feat = resp,
                 tableData = [];
             console.log(feat[0])
             // Iterate over the JSON object
@@ -331,9 +331,9 @@
           });
 
       } else {
-        var link = "https://beta-353914.lm.r.appspot.com/acs"
+        var link = "https://socrata-fastapi-dcojycxoeq-lm.a.run.app/narn/acs"
         $.getJSON(link, function(resp) {
-            var feat = resp.results,
+            var feat = resp,
                 tableData = [];
             console.log(feat[0])
             // Iterate over the JSON object
