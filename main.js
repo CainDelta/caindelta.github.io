@@ -331,7 +331,7 @@
           });
 
       } else {
-        var link = "https://socrata-fastapi-dcojycxoeq-lm.a.run.app/narn/acs"
+        var link = "https://socrata-fastapi-dcojycxoeq-lm.a.run.app/acs"
         $.getJSON(link, function(resp) {
             var feat = resp,
                 tableData = [];
