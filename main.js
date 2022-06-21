@@ -248,7 +248,7 @@
       console.log(endpoint_url)
 
       if((endpoint_url.includes('bby4-tw54'))){
-
+        //added gcp link
         var link = "https://socrata-fastapi-dcojycxoeq-lm.a.run.app/narn"
         $.getJSON(link, function(resp) {
             var feat = resp,
