@@ -51,7 +51,7 @@
         // NARN
         if (endpoint_url.includes('bby4-tw54')) {
 
-            //leave in case we need to implement json option 
+            //leave in case we need to implement json option
             /* var col2 = { id: "objectid", dataType: tableau.dataTypeEnum.string};
             var col1 = { id: "the_geom", dataType: tableau.dataTypeEnum.geometry};
             var col3 = { id: "fraarcid", dataType: tableau.dataTypeEnum.string};
@@ -123,7 +123,7 @@
             var col38 = { id: "geometry", dataType: tableau.dataTypeEnum.geometry};
 
 
-        
+
             cols = [col1, col2, col3, col4, col5, col6, col7, col8, col9,
                 col10, col11, col12, col13, col14, col15, col16, col17,
                 col18, col19, col20, col21, col22, col23,col24,col25,col26,col27,col28,col29,
@@ -177,7 +177,7 @@
         }
         // ASC 2020 with Geometry
         else {
-            
+
             var col1 = { id: "countyns", dataType: tableau.dataTypeEnum.string};
             var col2 = { id: "totalwhite_age", dataType: tableau.dataTypeEnum.int};
             var col3 = { id: "totaltwoormoreracesfemale", dataType: tableau.dataTypeEnum.int};
@@ -291,6 +291,20 @@
         DoneCallback();
     }
 
+    // add the data in manageable chunks
+    function chunkDataHeavy(table, tableData,DoneCallback) {
+        var row_index = 0;
+        var size = 1000;
+        while (row_index < tableData.length) {
+            table.appendRows(tableData.slice(row_index, size + row_index));
+            row_index += size;
+            tableau.reportProgress("Getting row: " + row_index);
+            tableau.log("Getting row: " + row_index);
+        }
+        tableau.log("data pulled");
+        DoneCallback();
+    }
+
 
     myConnector.getData = function(table, doneCallback) {
 
@@ -333,7 +347,7 @@
                     'timezone': feat[i].timezone,
                     'shape_leng': feat[i].shape_leng,
                     'shape_stlength': feat[i].shape_stlength */
-                    
+
                     'rrowner3': feat[i].properties.rrowner3,
                     'carddirect': feat[i].properties.carddirect,
                     'trkrghts3': feat[i].properties.trkrghts3,
@@ -482,11 +496,11 @@
                     'totalhawaiianandpacislan': feat[i].properties.totalhawaiianandpacislan,
                     'totaltwoormoreracesmale_age': feat[i].properties.totaltwoormoreracesmale_age,
                     'geometry': feat[i].geometry
-                    
+
 
                 });
             }
-            chunkData(table, tableData,DoneCallback);
+            chunkDataHeavy(table, tableData,DoneCallback);
             //table.appendRows(tableData);
             doneCallback();
           });
