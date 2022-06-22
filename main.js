@@ -51,8 +51,8 @@
         // NARN
         if (endpoint_url.includes('bby4-tw54')) {
 
-
-            var col2 = { id: "objectid", dataType: tableau.dataTypeEnum.string};
+            //leave in case we need to implement json option 
+            /* var col2 = { id: "objectid", dataType: tableau.dataTypeEnum.string};
             var col1 = { id: "the_geom", dataType: tableau.dataTypeEnum.geometry};
             var col3 = { id: "fraarcid", dataType: tableau.dataTypeEnum.string};
             var col4 = { id: "frfranode", dataType: tableau.dataTypeEnum.string};
@@ -81,7 +81,57 @@
 
             cols = [col1, col2, col3, col4, col5, col6, col7, col8, col9,
                 col10, col11, col12, col13, col14, col15, col16, col17,
-                col18, col19, col20, col21, col22, col23];
+                col18, col19, col20, col21, col22, col23]; */
+
+           var col1 = { id: "rrowner3", dataType: tableau.dataTypeEnum.string};
+            var col2 = { id: "carddirect", dataType: tableau.dataTypeEnum.string};
+            var col3 = { id: "trkrghts3", dataType: tableau.dataTypeEnum.string};
+            var col4 = { id: "trkrghts9", dataType: tableau.dataTypeEnum.string};
+            var col5 = { id: "stfips", dataType: tableau.dataTypeEnum.string};
+            var col6 = { id: "fraregion", dataType: tableau.dataTypeEnum.string};
+            var col7 = { id: "cntyfips", dataType: tableau.dataTypeEnum.string};
+            var col8 = { id: "tofranode", dataType: tableau.dataTypeEnum.string};
+            var col9 = { id: "stracnet", dataType: tableau.dataTypeEnum.string};
+            var col10 = { id: "trkrghts4", dataType: tableau.dataTypeEnum.string};
+            var col11 = { id: "siding", dataType: tableau.dataTypeEnum.string};
+            var col12 = { id: "miles", dataType: tableau.dataTypeEnum.float};
+            var col13 = { id: "timezone", dataType: tableau.dataTypeEnum.string};
+            var col14 = { id: "direction", dataType: tableau.dataTypeEnum.string};
+            var col15 = { id: "passngr", dataType: tableau.dataTypeEnum.int};
+            var col16 = { id: "country", dataType: tableau.dataTypeEnum.string};
+            var col17 = { id: "objectid", dataType: tableau.dataTypeEnum.string};
+            var col18 = { id: "frfranode", dataType: tableau.dataTypeEnum.string};
+            var col19 = { id: "trkrghts8", dataType: tableau.dataTypeEnum.string};
+            var col20 = { id: "net", dataType: tableau.dataTypeEnum.string};
+            var col21 = { id: "shape_leng", dataType: tableau.dataTypeEnum.float};
+            var col22 = { id: "tracks", dataType: tableau.dataTypeEnum.string};
+            var col23 = { id: "rrowner1", dataType: tableau.dataTypeEnum.string};
+            var col24 = { id: "fraarcid", dataType: tableau.dataTypeEnum.string};
+            var col25 = { id: "trkrghts7", dataType: tableau.dataTypeEnum.string};
+            var col26 = { id: "trkrghts1", dataType: tableau.dataTypeEnum.string};
+            var col27 = { id: "stateab", dataType: tableau.dataTypeEnum.string};
+            var col28 = { id: "rrowner2", dataType: tableau.dataTypeEnum.string};
+            var col29 = { id: "subdiv", dataType: tableau.dataTypeEnum.string};
+            var col30 = { id: "trkrghts2", dataType: tableau.dataTypeEnum.string};
+            var col31 = { id: "yardtype", dataType: tableau.dataTypeEnum.string};
+            var col32 = { id: "shape_stlength", dataType: tableau.dataTypeEnum.float};
+            var col33 = { id: "trkrghts5", dataType: tableau.dataTypeEnum.string};
+            var col34 = { id: "stcntyfips", dataType: tableau.dataTypeEnum.string};
+            var col35 = { id: "trkrghts6", dataType: tableau.dataTypeEnum.string};
+            var col36 = { id: "km", dataType: tableau.dataTypeEnum.float};
+            var col37 = { id: "yardname", dataType: tableau.dataTypeEnum.string};
+            var col38 = { id: "geometry", dataType: tableau.dataTypeEnum.geometry};
+
+
+        
+            cols = [col1, col2, col3, col4, col5, col6, col7, col8, col9,
+                col10, col11, col12, col13, col14, col15, col16, col17,
+                col18, col19, col20, col21, col22, col23,col24,col25,col26,col27,col28,col29,
+                col30,col31,col32,col33,col34,col35,col36,col37,col38];
+
+
+
+
             tableInfo = {
                 id: "NARN",
                 alias: "North American Rail Network (NARN)",
@@ -127,57 +177,59 @@
         }
         // ASC 2020 with Geometry
         else {
-            var col1 = { id: "totalpop_age", dataType: "string"};
-            var col2 = { id: "totalmalepop_age", dataType: "string"};
-            var col3 = { id: "totalfemalepop_age", dataType: "string"};
-            var col4 = { id: "totalwhite_age", dataType: "string"};
-            var col5 = { id: "totalwhitemale_age", dataType: "string"};
-            var col6 = { id: "totalwhitefemale_age", dataType: "string"};
-            var col7 = { id: "totalblackorafricanamer_age", dataType: "string"};
-            var col8 = { id: "totalblackorafricanamermale", dataType: "string"};
-            var col9 = { id: "totalblackorafricanamerfemale", dataType: "string"};
-            var col10 = { id: "totalamerindianandalaskanative", dataType: "int" };
-            var col11 = { id: "totalamerindianandalaska", dataType: "string"};
-            var col12 = { id: "totalamerindianandalaska_1", dataType: "string"};
-            var col13 = { id: "totalasain_age", dataType: "string"};
-            var col14 = { id: "totalasainmale_age", dataType: "string"};
-            var col15 = { id: "totalasainfemale_age", dataType: "string"};
-            var col16 = { id: "totalhawaiianandpacislander", dataType: "string"};
-            var col17 = { id: "totalhawaiianandpacislan", dataType: "string"};
-            var col18 = { id: "totalhawaiianandpacislan_1", dataType: "string"};
-            var col19 = { id: "totalotheralone_age", dataType: "string"};
-            var col20 = { id: "totalotheralonemale_age", dataType: "string"};
-            var col21 = { id: "totalotheralonefemale_age", dataType: "string"};
-            var col22 = { id: "totaltwoormoreraces_age", dataType: "string"};
-            var col23 = { id: "totaltwoormoreracesmale_age", dataType: "string"};
-            var col24 = { id: "totaltwoormoreracesfemale", dataType: "string"};
-            var col25 = { id: "totalwhitenothispaniclatino", dataType: "string"};
-            var col26 = { id: "totalwhitenothispaniclat", dataType: "string"};
-            var col27 = { id: "totalwhitenothispaniclat_1", dataType: "string"};
-            var col28 = { id: "totalhispaniclatino_age", dataType: "string"};
-            var col29 = { id: "totalhispaniclatinomale_age", dataType: "string"};
-            var col30 = { id: "totalhispaniclatinofemale", dataType: "string"};
-            var col31 = { id: "name", dataType: "string"};
-            var col32 = { id: "state", dataType: "string"};
-            var col33 = { id: "county", dataType: "string"};
-            var col34 = { id: "name_check", dataType: "string"};
-            var col35 = { id: "the_geom", dataType: "string"};
-            var col36 = { id: "statefp", dataType: "string"};
-            var col37 = { id: "countyfp", dataType: "string"};
-            var col38 = { id: "countyns", dataType: "string"};
-            var col39 = { id: "geoid", dataType: "string"};
-            var col40 = { id: "namelsad", dataType: "string"};
-            var col41 = { id: "lsad", dataType: "string"};
-            var col42 = { id: "classfp", dataType: "string"};
-            var col43 = { id: "mtfcc", dataType: "string"};
-            var col44 = { id: "csafp", dataType: "string"};
-            var col45 = { id: "cbsafp", dataType: "string"};
-            var col46 = { id: "metdivfp", dataType: "string"};
-            var col47 = { id: "funcstat", dataType: "string"};
-            var col48 = { id: "aland", dataType: "float" };
-            var col49 = { id: "awater", dataType: "float" };
-            var col50 = { id: "intptlat", dataType: "string"};
-            var col51 = { id: "intptlon", dataType: "string"};
+            
+            var col1 = { id: "countyns", dataType: tableau.dataTypeEnum.string};
+            var col2 = { id: "totalwhite_age", dataType: tableau.dataTypeEnum.int};
+            var col3 = { id: "totaltwoormoreracesfemale", dataType: tableau.dataTypeEnum.int};
+            var col4 = { id: "classfp", dataType: tableau.dataTypeEnum.string};
+            var col5 = { id: "totalotheralone_age", dataType: tableau.dataTypeEnum.int};
+            var col6 = { id: "totalblackorafricanamerfemale", dataType: tableau.dataTypeEnum.int};
+            var col7 = { id: "name", dataType: tableau.dataTypeEnum.string};
+            var col8 = { id: "intptlon", dataType: tableau.dataTypeEnum.string};
+            var col9 = { id: "awater", dataType: tableau.dataTypeEnum.string};
+            var col10 = { id: "totalblackorafricanamermale", dataType: tableau.dataTypeEnum.int};
+            var col11 = { id: "totalotheralonemale_age", dataType: tableau.dataTypeEnum.int};
+            var col12 = { id: "totalhispaniclatinomale_age", dataType: tableau.dataTypeEnum.int};
+            var col13 = { id: "totalfemalepop_age", dataType: tableau.dataTypeEnum.int};
+            var col14 = { id: "mtfcc", dataType: tableau.dataTypeEnum.string};
+            var col15 = { id: "totalblackorafricanamer_age", dataType: tableau.dataTypeEnum.int};
+            var col16 = { id: "state", dataType: tableau.dataTypeEnum.string};
+            var col17 = { id: "aland", dataType: tableau.dataTypeEnum.string};
+            var col18 = { id: "totalasain_age", dataType: tableau.dataTypeEnum.int};
+            var col19 = { id: "namelsad", dataType: tableau.dataTypeEnum.string};
+            var col20 = { id: "statefp", dataType: tableau.dataTypeEnum.string};
+            var col21 = { id: "totalamerindianandalaska", dataType: tableau.dataTypeEnum.int};
+            var col22 = { id: "totalamerindianandalaska_1", dataType: tableau.dataTypeEnum.int};
+            var col23 = { id: "totalwhitefemale_age", dataType: tableau.dataTypeEnum.int};
+            var col24 = { id: "totalwhitenothispaniclat", dataType: tableau.dataTypeEnum.int};
+            var col25 = { id: "cbsafp", dataType: tableau.dataTypeEnum.string};
+            var col26 = { id: "county", dataType: tableau.dataTypeEnum.string};
+            var col27 = { id: "intptlat", dataType: tableau.dataTypeEnum.string};
+            var col28 = { id: "name_check", dataType: tableau.dataTypeEnum.string};
+            var col29 = { id: "csafp", dataType: tableau.dataTypeEnum.string};
+            var col30 = { id: "totalwhitenothispaniclat_1", dataType: tableau.dataTypeEnum.int};
+            var col31 = { id: "totalpop_age", dataType: tableau.dataTypeEnum.int};
+            var col32 = { id: "funcstat", dataType: tableau.dataTypeEnum.string};
+            var col33 = { id: "totalmalepop_age", dataType: tableau.dataTypeEnum.int};
+            var col34 = { id: "totalwhitemale_age", dataType: tableau.dataTypeEnum.int};
+            var col35 = { id: "totalhawaiianandpacislan_1", dataType: tableau.dataTypeEnum.int};
+            var col36 = { id: "totalasainmale_age", dataType: tableau.dataTypeEnum.int};
+            var col37 = { id: "totaltwoormoreraces_age", dataType: tableau.dataTypeEnum.int};
+            var col38 = { id: "totalhispaniclatinofemale", dataType: tableau.dataTypeEnum.int};
+            var col39 = { id: "totalamerindianandalaskanative", dataType: tableau.dataTypeEnum.int};
+            var col40 = { id: "totalhispaniclatino_age", dataType: tableau.dataTypeEnum.int};
+            var col41 = { id: "countyfp", dataType: tableau.dataTypeEnum.string};
+            var col42 = { id: "metdivfp", dataType: tableau.dataTypeEnum.string};
+            var col43 = { id: "totalhawaiianandpacislander", dataType: tableau.dataTypeEnum.int};
+            var col44 = { id: "totalasainfemale_age", dataType: tableau.dataTypeEnum.int};
+            var col45 = { id: "totalotheralonefemale_age", dataType: tableau.dataTypeEnum.int};
+            var col46 = { id: "totalwhitenothispaniclatino", dataType: tableau.dataTypeEnum.int};
+            var col47 = { id: "lsad", dataType: tableau.dataTypeEnum.string};
+            var col48 = { id: "geoid", dataType: tableau.dataTypeEnum.string};
+            var col49 = { id: "totalhawaiianandpacislan", dataType: tableau.dataTypeEnum.int};
+            var col50 = { id: "totaltwoormoreracesmale_age", dataType: tableau.dataTypeEnum.int};
+            var col51 = { id: "geometry", dataType: tableau.dataTypeEnum.geometry};
+
 
             cols = [col1, col2, col3, col4, col5, col6, col7, col8, col9,
                 col10, col11, col12, col13, col14, col15, col16, col17,
@@ -251,14 +303,14 @@
         //added gcp link
         var link = "https://socrata-fastapi-dcojycxoeq-lm.a.run.app/narn"
         $.getJSON(link, function(resp) {
-            var feat = resp,
+            var feat = resp.features,
                 tableData = [];
             console.log(feat)
             // Iterate over the JSON object
             for (var i = 0, len = feat.length; i < len; i++) {
                 tableData.push({
 
-                    'objectid': feat[i].objectid,
+                   /* 'objectid': feat[i].objectid,
                     'the_geom': feat[i].the_geom,
                     'fraarcid': feat[i].fraarcid,
                     'frfranode': feat[i].frfranode,
@@ -280,7 +332,47 @@
                     'km': feat[i].km,
                     'timezone': feat[i].timezone,
                     'shape_leng': feat[i].shape_leng,
-                    'shape_stlength': feat[i].shape_stlength
+                    'shape_stlength': feat[i].shape_stlength */
+                    
+                    'rrowner3': feat[i].properties.rrowner3,
+                    'carddirect': feat[i].properties.carddirect,
+                    'trkrghts3': feat[i].properties.trkrghts3,
+                    'trkrghts9': feat[i].properties.trkrghts9,
+                    'stfips': feat[i].properties.stfips,
+                    'fraregion': feat[i].properties.fraregion,
+                    'cntyfips': feat[i].properties.cntyfips,
+                    'tofranode': feat[i].properties.tofranode,
+                    'stracnet': feat[i].properties.stracnet,
+                    'trkrghts4': feat[i].properties.trkrghts4,
+                    'siding': feat[i].properties.siding,
+                    'miles': feat[i].properties.miles,
+                    'timezone': feat[i].properties.timezone,
+                    'direction': feat[i].properties.direction,
+                    'passngr': feat[i].properties.passngr,
+                    'country': feat[i].properties.country,
+                    'objectid': feat[i].properties.objectid,
+                    'frfranode': feat[i].properties.frfranode,
+                    'trkrghts8': feat[i].properties.trkrghts8,
+                    'net': feat[i].properties.net,
+                    'shape_leng': feat[i].properties.shape_leng,
+                    'tracks': feat[i].properties.tracks,
+                    'rrowner1': feat[i].properties.rrowner1,
+                    'fraarcid': feat[i].properties.fraarcid,
+                    'trkrghts7': feat[i].properties.trkrghts7,
+                    'trkrghts1': feat[i].properties.trkrghts1,
+                    'stateab': feat[i].properties.stateab,
+                    'rrowner2': feat[i].properties.rrowner2,
+                    'subdiv': feat[i].properties.subdiv,
+                    'trkrghts2': feat[i].properties.trkrghts2,
+                    'yardtype': feat[i].properties.yardtype,
+                    'shape_stlength': feat[i].properties.shape_stlength,
+                    'trkrghts5': feat[i].properties.trkrghts5,
+                    'stcntyfips': feat[i].properties.stcntyfips,
+                    'trkrghts6': feat[i].properties.trkrghts6,
+                    'km': feat[i].properties.km,
+                    'yardname': feat[i].properties.yardname,
+                    'geometry': feat[i].geometry
+
 
                 });
             }
@@ -333,64 +425,65 @@
       } else {
         var link = "https://socrata-fastapi-dcojycxoeq-lm.a.run.app/acs"
         $.getJSON(link, function(resp) {
-            var feat = resp,
+            var feat = resp.features,
                 tableData = [];
             console.log(feat[0])
             // Iterate over the JSON object
             for (var i = 0, len = feat.length; i < len; i++) {
                 tableData.push({
-                  'OBJECTID': feat[i].objectid,
-                  'TotalPop_Age': feat[i].totalpop_age,
-                  'TotalMalePop_Age': feat[i].totalmalepop_age,
-                  'TotalFemalePop_Age': feat[i].totalfemalepop_age,
-                  'TotalWhite_Age': feat[i].totalwhite_age,
-                  'TotalWhiteMale_Age': feat[i].totalwhitemale_age,
-                  'TotalWhiteFemale_Age': feat[i].totalwhitefemale_age,
-                  'TotalBlackorAfricanAmer_Age': feat[i].totalblackorafricanamer_age,
-                  'TotalBlackorAfricanAmerMale_Age': feat[i].totalblackorafricanamermale,
-                  'TotalBlackorAfricanAmerFemale_Age': feat[i].totalblackorafricanamerfemale,
-                  'TotalAmerIndianAndAlaskaNative_Age': feat[i].totalamerindianandalaskanative,
-                  'TotalAmerIndianAndAlaskaNativeMale_Age': feat[i].totalamerindianandalaskanative,
-                  'TotalAmerIndianAndAlaskaNativeFemale_Age': feat[i].totalamerindianandalaska_1,
-                  'TotalAsain_Age': feat[i].totalasain_age,
-                  'TotalAsainMale_Age': feat[i].totalasainmale_age,
-                  'TotalAsainFemale_Age': feat[i].totalasainfemale_age,
-                  'TotalHawaiianAndPacIslander_Age': feat[i].totalhawaiianandpacislander,
-                  'TotalHawaiianAndPacIslanderMale_Age': feat[i].totalhawaiianandpacislan,
-                  'TotalHawaiianAndPacIslanderFemale_Age': feat[i].totalhawaiianandpacislan_1,
-                  'TotalOtherAlone_Age': feat[i].totalotheralone_age,
-                  'TotalOtherAloneMale_Age': feat[i].totalotheralonemale_age,
-                  'TotalOtherAloneFemale_Age': feat[i].totalotheralonefemale_age,
-                  'TotalTwoOrMoreRaces_Age': feat[i].totaltwoormoreraces_age,
-                  'TotalTwoOrMoreRacesMale_Age': feat[i].totaltwoormoreracesmale_age,
-                  'TotalTwoOrMoreRacesFemale_Age': feat[i].totaltwoormoreracesfemale,
-                  'TotalWhiteNotHispanicLatino_Age': feat[i].totalwhitenothispaniclatino,
-                  'TotalWhiteNotHispanicLatinoMale_Age': feat[i].totalwhitenothispaniclat,
-                  'TotalWhiteNotHispanicLatinoFemale_Age': feat[i].totalwhitenothispaniclat_1,
-                  'TotalHispanicLatino_Age': feat[i].totalhispaniclatino_age,
-                  'TotalHispanicLatinoMale_Age': feat[i].totalhispaniclatinomale_age,
-                  'TotalHispanicLatinoFemale_Age': feat[i].totalhispaniclatinofemale,
-                  'NAME': feat[i].name,
-                  'state': feat[i].state,
-                  'county': feat[i].county,
-                  'NameCheck': feat[i].name_check,
-                  'the_geom': feat[i].the_geom,
-                  'statefp': feat[i].statefp,
-                  'countyfp': feat[i].countyfp,
-                  'countyns': feat[i].countyns,
-                  'geoid': feat[i].geoid,
-                  'namelsad': feat[i].namelsad,
-                  'lsad': feat[i].lsad,
-                  'classfp': feat[i].classfp,
-                  'mtfcc': feat[i].mtfcc,
-                  'csafp': feat[i].csafp,
-                  'cbsafp': feat[i].cbsafp,
-                  'metdivfp': feat[i].metdivfp,
-                  'funcstat': feat[i].funcstat,
-                  'aland': feat[i].aland,
-                  'awater': feat[i].awater,
-                  'intptlat': feat[i].intptlat,
-                  'intptlon': feat[i].intptlon
+                    'countyns': feat[i].properties.countyns,
+                    'totalwhite_age': feat[i].properties.totalwhite_age,
+                    'totaltwoormoreracesfemale': feat[i].properties.totaltwoormoreracesfemale,
+                    'classfp': feat[i].properties.classfp,
+                    'totalotheralone_age': feat[i].properties.totalotheralone_age,
+                    'totalblackorafricanamerfemale': feat[i].properties.totalblackorafricanamerfemale,
+                    'name': feat[i].properties.name,
+                    'intptlon': feat[i].properties.intptlon,
+                    'awater': feat[i].properties.awater,
+                    'totalblackorafricanamermale': feat[i].properties.totalblackorafricanamermale,
+                    'totalotheralonemale_age': feat[i].properties.totalotheralonemale_age,
+                    'totalhispaniclatinomale_age': feat[i].properties.totalhispaniclatinomale_age,
+                    'totalfemalepop_age': feat[i].properties.totalfemalepop_age,
+                    'mtfcc': feat[i].properties.mtfcc,
+                    'totalblackorafricanamer_age': feat[i].properties.totalblackorafricanamer_age,
+                    'state': feat[i].properties.state,
+                    'aland': feat[i].properties.aland,
+                    'totalasain_age': feat[i].properties.totalasain_age,
+                    'namelsad': feat[i].properties.namelsad,
+                    'statefp': feat[i].properties.statefp,
+                    'totalamerindianandalaska': feat[i].properties.totalamerindianandalaska,
+                    'totalamerindianandalaska_1': feat[i].properties.totalamerindianandalaska_1,
+                    'totalwhitefemale_age': feat[i].properties.totalwhitefemale_age,
+                    'totalwhitenothispaniclat': feat[i].properties.totalwhitenothispaniclat,
+                    'cbsafp': feat[i].properties.cbsafp,
+                    'county': feat[i].properties.county,
+                    'intptlat': feat[i].properties.intptlat,
+                    'name_check': feat[i].properties.name_check,
+                    'csafp': feat[i].properties.csafp,
+                    'totalwhitenothispaniclat_1': feat[i].properties.totalwhitenothispaniclat_1,
+                    'totalpop_age': feat[i].properties.totalpop_age,
+                    'funcstat': feat[i].properties.funcstat,
+                    'totalmalepop_age': feat[i].properties.totalmalepop_age,
+                    'totalwhitemale_age': feat[i].properties.totalwhitemale_age,
+                    'totalhawaiianandpacislan_1': feat[i].properties.totalhawaiianandpacislan_1,
+                    'totalasainmale_age': feat[i].properties.totalasainmale_age,
+                    'totaltwoormoreraces_age': feat[i].properties.totaltwoormoreraces_age,
+                    'totalhispaniclatinofemale': feat[i].properties.totalhispaniclatinofemale,
+                    'totalamerindianandalaskanative': feat[i].properties.totalamerindianandalaskanative,
+                    'totalhispaniclatino_age': feat[i].properties.totalhispaniclatino_age,
+                    'countyfp': feat[i].properties.countyfp,
+                    'metdivfp': feat[i].properties.metdivfp,
+                    'totalhawaiianandpacislander': feat[i].properties.totalhawaiianandpacislander,
+                    'totalasainfemale_age': feat[i].properties.totalasainfemale_age,
+                    'totalotheralonefemale_age': feat[i].properties.totalotheralonefemale_age,
+                    'totalwhitenothispaniclatino': feat[i].properties.totalwhitenothispaniclatino,
+                    'lsad': feat[i].properties.lsad,
+                    'geoid': feat[i].properties.geoid,
+                    'totalhawaiianandpacislan': feat[i].properties.totalhawaiianandpacislan,
+                    'totaltwoormoreracesmale_age': feat[i].properties.totaltwoormoreracesmale_age,
+                    'geometry': feat[i].geometry
+                    
+
                 });
             }
             chunkData(table, tableData,DoneCallback);
