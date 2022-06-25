@@ -14,7 +14,7 @@
 
       //updateUIWithAuthState(hasAuth);
       $("#submitButton").click(function () {
-          tableau.connectionName = "Socratas Test API";
+          tableau.connectionName = "Socratas  API";
           // connectionData = {
           //     // "max_iterations": 1000,
           //     // "token": accessToken,
@@ -390,51 +390,69 @@
 
                 });
             }
-            chunkData(table, tableData,DoneCallback);
+            chunkData(table, tableData,50000,DoneCallback);
             //table.appendRows(tableData);
             doneCallback();
           });
 
       } else if ((endpoint_url.includes('uu2z-f857'))) {
 
-        var link = "https://socrata-fastapi-dcojycxoeq-lm.a.run.app/dotfra"
-        $.getJSON(link, function(resp) {
-            var feat = resp,
-                tableData = [];
-            console.log(feat[0])
-            // Iterate over the JSON object
-            for (var i = 0, len = feat.length; i < len; i++) {
-                tableData.push({
+        var skip = 0;
+        var limit = 250000;
 
-                    'report_year': feat[i].report_year,
-                    'activity_discipline': feat[i].activity_discipline,
-                    'activity_discipline_name': feat[i].activity_discipline_name,
-                    'ref_county_code': feat[i].ref_county_code,
-                    'ref_county_name': feat[i].ref_county_name,
-                    'ref_state_code': feat[i].ref_state_code,
-                    'ref_state_abb': feat[i].ref_state_abb,
-                    'ref_state_name': feat[i].ref_state_name,
-                    'report_id': feat[i].report_id,
-                    'row_id': feat[i].row_id,
-                    'source_code_name': feat[i].source_code_name,
-                    'geocode': feat[i].geocode,
-                    'from_county_code': feat[i].from_county_code,
-                    'from_county_name': feat[i].from_county_name,
-                    'from_state_name': feat[i].from_state_name,
-                    'from_state_code': feat[i].from_state_code,
-                    'from_city_code': feat[i].from_city_code,
-                    'report_date': feat[i].report_date,
-                    'report_no': feat[i].report_no,
-                    'payroll_id': feat[i].payroll_id,
-                    'activity': feat[i].activity,
-                    'activity_name': feat[i].activity_name
+        for (var i = 0, len = 10; i < len; i++){
+            var link = 'https://socrata-fastapi-dcojycxoeq-lm.a.run.app/dotfra?skip=' + skip + '&limit=' + limit
+            console.log(link)
+            $.ajax({
 
-                });
-            }
-            chunkData(table, tableData,DoneCallback);
-            //table.appendRows(tableData);
-            doneCallback();
-          });
+                url : link,
+                async : false,
+                success :function(data){
+                var feat = data,
+                    tableData = [];
+
+                        // Iterate over the JSON object
+                        for (var i = 0, len = feat.length; i < len; i++) {
+                            tableData.push({
+
+                                'report_year': feat[i].report_year,
+                                'activity_discipline': feat[i].activity_discipline,
+                                'activity_discipline_name': feat[i].activity_discipline_name,
+                                'ref_county_code': feat[i].ref_county_code,
+                                'ref_county_name': feat[i].ref_county_name,
+                                'ref_state_code': feat[i].ref_state_code,
+                                'ref_state_abb': feat[i].ref_state_abb,
+                                'ref_state_name': feat[i].ref_state_name,
+                                'report_id': feat[i].report_id,
+                                'row_id': feat[i].row_id,
+                                'source_code_name': feat[i].source_code_name,
+                                'geocode': feat[i].geocode,
+                                'from_county_code': feat[i].from_county_code,
+                                'from_county_name': feat[i].from_county_name,
+                                'from_state_name': feat[i].from_state_name,
+                                'from_state_code': feat[i].from_state_code,
+                                'from_city_code': feat[i].from_city_code,
+                                'report_date': feat[i].report_date,
+                                'report_no': feat[i].report_no,
+                                'payroll_id': feat[i].payroll_id,
+                                'activity': feat[i].activity,
+                                'activity_name': feat[i].activity_name
+
+                            });
+
+
+                        }
+                        //table.appendRows(tableData)
+                        chunkData(table,tableData,50000,DoneCallback)
+                        skip += limit
+                }
+
+
+            });
+        }
+
+
+        doneCallback();
 
       } else {
         var link = "https://socrata-fastapi-dcojycxoeq-lm.a.run.app/acs"
