@@ -278,9 +278,9 @@
 
 
     // add the data in manageable chunks
-    function chunkData(table, tableData,DoneCallback) {
+    function chunkData(table, tableData,size,DoneCallback) {
         var row_index = 0;
-        var size = 10000;
+        // var size = 10000;
         while (row_index < tableData.length) {
             table.appendRows(tableData.slice(row_index, size + row_index));
             row_index += size;
